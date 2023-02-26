@@ -91,4 +91,4 @@ deal).
 - Nmap docs: `$ man nmap`
 - Nmap website: https://nmap.org
 - Documentation on NSE: https://nmap.org/book/man-nse.html
-- How the TCP protocol works: https://en.wikipedia.org/wiki/Internet\_protocol\_suite
+- How the TCP protocol works: https://en.wikipedia.org/wiki/Internet_protocol_suite
