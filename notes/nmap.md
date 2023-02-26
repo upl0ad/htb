@@ -44,3 +44,51 @@ does so)
 unfiltered - means that the port respond to nmap's request, but
 nmap can't actually tell the port's state.
 
+### scan techniques
+
+```prompt
+$ # read the docs bro
+$ man nmap(1)  # then search for the scan flag
+```
+
+It is important to remember that nmap uses raw IP packets
+that are sent over TCP to the target, so you must understand
+the bare basics of the TCP protocol.
+
+`-sS` - SYN scan. It is a scan where nmap sends a packet, the
+port respond with the syn/ack packet but nmap ignores it and
+doesn't connect. Because it doesn't connect to a host, it is
+fast and quite silent.
+
+`-sT` - TCP Connect scan. When Syn scan is not an option,
+we must use the connect scan. Read the docs
+
+## nmap scripting engine
+
+The is this NSE (nmap scripting engine) that allows you to have
+programmatically access to nmap scan data with Lua code. For you
+that don't know, lua is a programming language largely used for
+scripting.
+
+NSE allows you to automate some activities, check for vulnerabilities
+in a system, etc. For example, if you noticed that the system runs
+a FTP server and want to test if `anonymous` login is allowed in that
+server, you can use the command:
+
+```prompt
+$ nmap --script=ftp-anon <target>
+```
+
+And nmap, using nmap scripting engine, will automate the task
+specified in the script (check for anonymous login). You can
+learn NSE by understanding the global variables passed to the
+script by nmap and a bit of lua language (if you are familiar
+with C or any programming language, it will not be a big of a
+deal).
+
+## References
+
+- Nmap docs: `$ man nmap`
+- Nmap website: https://nmap.org
+- Documentation on NSE: https://nmap.org/book/man-nse.html
+- How the TCP protocol works: https://en.wikipedia.org/wiki/Internet\_protocol\_suite
